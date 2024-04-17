@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: viralata_ads
+    database: cn-analytics-project
+    schema: viralata_finance  
+    tables:
+      - name: info_geral
+      - name: info_geral_video_30_sec_watched_actions
+      - name: info_geral_outbound_clicks
