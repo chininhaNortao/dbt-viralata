@@ -20,13 +20,32 @@ with
             , click.value as outbound_click
             , video.value as video_view
         from info_geral
-        inner join outbound_clicks as click on
+        left join outbound_clicks as click on
             click.ad_id = info_geral.ad_id
             and click.date = info_geral.date
-        inner join video_30 as video on
+        left join video_30 as video on
             video.ad_id = info_geral.ad_id
             and video.date = info_geral.date
     )
 
+    , renamed as (
+        select 
+            date
+            , account_id
+            , ad_id
+            , campaign_name
+            , adset_name
+            , ad_name
+            , spend
+            , reach
+            , impressions
+            , clicks
+            , inline_link_clicks as link_click
+            , inline_post_engagement as post_engagement
+            , outbound_click
+            , video_view
+        from joining
+    )
+
 select *
-from joining
+from renamed
